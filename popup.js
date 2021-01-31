@@ -1,22 +1,16 @@
-console.log("popped up");
+document.getElementById('add-website').onclick = async function(){
 
-document.getElementById('button').onclick = function() {
-    console.log("button clicked");
+    let url = document.getElementById('website').value;
+    console.log(url);
 
-    let queryInfo = {
-        active : true,
-        currentWindow : true
-    }
-    chrome.tabs.query(queryInfo, function(tabs) {
-        console.log(tabs[0].id);
-        
+    let message = {'blockUrl' : url};
+    await sendUrlToBackground(message);
+}
 
-        let msg = {
-            data : true
-        }
-        chrome.tabs.sendMessage(tabs[0].id, msg, function (response) {
-
-        });
+function sendUrlToBackground(message){
+    return new Promise(function (resolve, reject) {
+        chrome.runtime.sendMessage(message, function(response) {
+            console.log(response);
+          });
     })
-
 }
