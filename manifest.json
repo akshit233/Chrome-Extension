@@ -1,7 +1,7 @@
 {
-    "name": "My Extension",
+    "name": "PP ki extension",
     "version": "1.0",
-    "description": "Build an Extension!",
+    "description": "chrome extension ka getting started",
     "manifest_version": 2,
     "background": {
         "scripts": [
@@ -9,24 +9,11 @@
         ],
         "persistent": false
     },
-    "content_scripts": [
-        {
-            "matches": [
-                "<all_urls>"
-            ],
-            "js": [
-                "content.js"
-            ]
-        }
-    ],
     "browser_action": {
         "default_popup": "popup.html"
-      },
-      "web_accessible_resources": [
-        "images/*.jpg",
-        "images/*jpeg"
-      ],
-      "permissions" : [
-          "tabs"
-      ]
+    },
+    "permissions": [
+        "tabs",
+        "storage"
+    ]
 }
